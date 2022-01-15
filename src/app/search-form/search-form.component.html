@@ -1,4 +1,4 @@
-<form>
+<form (submit)="searchUser()">
     <div class="form-group" style="display: inline-flex;">
         <input type="search" [(ngModel)]="userInput" name="user" size="40" class="form-control" placeholder="Github User Name">
         <input type="submit" value="Search" class="btn btn-secondary btn-sm">
