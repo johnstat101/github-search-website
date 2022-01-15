@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchFormComponent implements OnInit {
 
+  public userInput!:string;
+
   constructor() { }
 
   ngOnInit(): void {
