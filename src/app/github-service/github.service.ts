@@ -21,8 +21,9 @@ export class GithubService {
        avatar_url:any; name:string; bio:string; public_repos:string; followers:string;
        following:string; created_at:Date; updated_at:Date;description:string; forks:string
      }
-     let promise = new Promise((resolve,reject)=>
-       this.http.get<ApiResponse>(environment.apiKey).toPromise().then(response=>{
+     
+     let promise = new Promise((resolve,reject)=>{
+       this.http.get<ApiResponse>('https://api.github.com/users/johnstat101').toPromise().then(response=>{
          this.user.avatar_url = response?.avatar_url
          this.user.bio = response!.bio
          this.user.name = response!.name
@@ -41,7 +42,8 @@ export class GithubService {
         this.user.following = "Not Found"
 
          reject(error)
-       }))
+       })
+      })
      
      return promise
    }

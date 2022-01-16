@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GithubService } from '../github-service/github.service';
+import { Repository } from '../repos-class/repository';
+import { User } from '../users-class/user';
 
 @Component({
   selector: 'app-search-form',
@@ -9,31 +11,21 @@ import { GithubService } from '../github-service/github.service';
 export class SearchFormComponent implements OnInit {
 
   public userInput:any;
-  public githubProfile:any;
-  public githubRepos!:any[];
+  public githubProfile!: User;
+  public githubRepos!: Repository;
 
   constructor(private githubService:GithubService) { }
 
   
   searchUser(){
-
     // get user profile
-    this.githubService.getProfile(this.userInput).subscribe(data=>{
-      this.githubProfile = data;
-    }, error=>{
-      console.log("An error occurred");
-    })
-
-    // get user repos
-    this.githubService.getRepos(this.userInput).subscribe(data=>{
-      this.githubRepos = data;
-    }, error=>{
-      console.log("An error occurred");
-    })
+    this.githubProfile = this.githubService.user;
+    this.githubRepos = this.githubService.repo;
 
   }
 
   ngOnInit(): void {
+    this.githubService.github();
   }
 
 }
