@@ -2,6 +2,8 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import { SearchFormComponent } from "src/app/search-form/search-form.component";
+
 export const environment = {
   production: false,
   apiKey: "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"

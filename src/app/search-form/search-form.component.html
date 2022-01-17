@@ -3,5 +3,20 @@
         <input type="search" [(ngModel)]="userInput" name="user" size="40" class="form-control" placeholder="Github User Name">
         <input type="submit" value="Search" class="btn btn-secondary btn-sm">
     </div>
-    <p>{{githubProfile.name}}</p>
 </form>
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <img [src]="githubProfile.avatar_url" alt="" class="img-fluid" mt-3>
+            <div class="card-body">
+                <h3 class="card-title">{{githubProfile.name}}</h3>
+                <p class="card-text">{{githubProfile.bio}}</p>
+                <a [href]="githubProfile.html_url" target="_blank" class="btn btn-success btn-sm">See Profile</a>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-8">
+        <p>{{githubProfile.bio}}</p>
+    </div>
+</div>
