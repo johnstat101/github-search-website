@@ -38,14 +38,7 @@ export class GithubService {
          resolve(response)
        },
        error=>{
-        this.user.avatar_url = "Not Found"
-        this.user.bio = "Not Found"
         this.user.name = "Not Found"
-        this.user.public_repos = "Not Found"
-        this.user.followers = "Not Found"
-        this.user.following = "Not Found"
-        this.user.created_at = new Date(1900,0,1)
-        this.user.updated_at = new Date(1900,0,1)
 
          reject(error)
        })
@@ -72,11 +65,7 @@ export class GithubService {
       },
       error=>{
         this.repo.name = "Not Found"
-        this.repo.description = "Not Found"
-        this.repo.forks = "Not Found"
-        this.repo.created_at = new Date(1900,0,1)
-        this.repo.updated_at = new Date(1900,0,1)
-
+        
         reject(error)
       })
      })

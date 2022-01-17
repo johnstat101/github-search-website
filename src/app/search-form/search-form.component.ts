@@ -12,6 +12,7 @@ export class SearchFormComponent implements OnInit {
   userInput!: string;
   public githubProfile!: User;
   public githubRepos!: Repository;
+  public today!: Date
 
   constructor(private githubService:GithubService) {
   }
