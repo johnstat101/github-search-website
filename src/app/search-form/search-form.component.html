@@ -24,7 +24,7 @@
                 <span class="btn btn-secondary btn-sm">{{githubProfile.public_repos}} Public Repos</span>
             </div>
             <div class="card-body">
-                <ul class="list-group" [(ngModel)]="today">
+                <ul class="list-group">
                     <li class="list-group-item">
                         User Name: <span class="font-weight-bold">{{githubProfile.name}}</span>
                     </li>
@@ -44,6 +44,9 @@
                         <a [href]="githubProfile.html_url" target="_blank" class="btn btn-success btn-sm">See All Public Repos</a>
                     </li>
                 </ul>
+                <div *ngFor="let repo of repos">
+                    <h4>{{repo.name}}</h4>
+                </div>
             </div>
         </div>
     </div>

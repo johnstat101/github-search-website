@@ -1,19 +1,20 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable, throwError } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Repository } from '../repos-class/repository';
 import { User } from '../users-class/user';
+import { catchError, retry } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GithubService {
   user: User;
-  repo: Repository
 
   constructor(private http:HttpClient) {
     this.user = new User("","","","","","","","",new Date,new Date);
-    this.repo = new Repository("","","",new Date,new Date);
    }
 
    githubUser(userInput:string){
@@ -23,7 +24,7 @@ export class GithubService {
      }
      
      let promise = new Promise((resolve,reject)=>{
-       this.http.get<ApiResponse>('https://api.github.com/users/'+userInput).toPromise().then(response=>{
+       this.http.get<ApiResponse>('https://api.github.com/users/'+userInput+'?client_id=' + environment.apiKey).toPromise().then(response=>{
        this.user.avatar_url = response?.avatar_url
          this.user.bio = response!.bio
          this.user.name = response!.name
@@ -43,34 +44,26 @@ export class GithubService {
          reject(error)
        })
       })
-     
      return promise
    }
-   
 
-   githubRepos(userInput:string){
-    interface ApiResponse{
-      name:string; created_at:Date; updated_at:Date;description:string; forks:string
+   // get repositories
+   githubRepos(userInput:any):Observable<any> {
+    return this.http.get<any>('https://api.github.com/users/' + userInput + '/repos?client_id=' + environment.apiKey)
+      .pipe(
+        retry(1),
+        catchError(this.handleErrors)
+      );
+  }
+  public handleErrors(error: HttpErrorResponse ){
+    let errorMessage: string;
+    if(error.error instanceof ErrorEvent){
+      errorMessage = 'MESSAGE: ${error.error.message}';
     }
-    
-    let promise = new Promise((resolve,reject)=>{
-      this.http.get<ApiResponse>('https://api.github.com/users/'+userInput+'/repos').toPromise().then(response=>{
-        this.repo.name = response!.name
-        this.repo.description = response!.description
-        this.repo.forks = response!.forks
-        this.repo.created_at = response!.created_at
-        this.repo.updated_at = response!.updated_at
-
-        resolve(response)
-      },
-      error=>{
-        this.repo.name = "Not Found"
-        
-        reject(error)
-      })
-     })
-    
-    return promise
+    else{
+      errorMessage = 'STATUS: ${error.status} MESSAGE: ${error.message}';
+    }
+    return throwError(errorMessage)
   }
 
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { GithubService } from '../github-service/github.service';
+import { Repository } from '../repos-class/repository';
 
 @Component({
   selector: 'app-display-repos',
@@ -7,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DisplayReposComponent implements OnInit {
 
-  constructor() { }
+
+  constructor(private githubService: GithubService) {
+   }
 
   ngOnInit(): void {
   }
