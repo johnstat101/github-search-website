@@ -48,8 +48,8 @@ export class GithubService {
    }
 
    // get repositories
-   githubRepos(userInput:any):Observable<any> {
-    return this.http.get<any>('https://api.github.com/users/' + userInput + '/repos?client_id=' + environment.apiKey)
+   githubRepos(userInput:any[]):Observable<any> {
+    return this.http.get<any[]>('https://api.github.com/users/' + userInput + '/repos?client_id=' + environment.apiKey)
       .pipe(
         retry(1),
         catchError(this.handleErrors)

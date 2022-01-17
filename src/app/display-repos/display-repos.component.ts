@@ -8,10 +8,23 @@ import { Repository } from '../repos-class/repository';
   styleUrls: ['./display-repos.component.css']
 })
 export class DisplayReposComponent implements OnInit {
+  userInput: any;
+  public repos!: any[];
+  public errorMessage!: string;
 
+  constructor(private githubService:GithubService) {
+    // get user Repos
+    this.githubService.githubRepos(this.userInput).subscribe(repos => {
+      this.repos = repos;
+    }, (error)=>{
+      this.errorMessage = error;
+    });
 
-  constructor(private githubService: GithubService) {
-   }
+  }
+
+  searchUser(){
+    
+  }
 
   ngOnInit(): void {
   }

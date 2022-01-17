@@ -41,12 +41,9 @@
                         Profile URL: {{githubProfile.html_url}}
                     </li>
                     <li class="list-group-item">
-                        <a [href]="githubProfile.html_url" target="_blank" class="btn btn-success btn-sm">See All Public Repos</a>
+                        <a routerLink="repos" target="_blank" class="btn btn-success btn-sm">See All Public Repos</a>
                     </li>
                 </ul>
-                <div *ngFor="let repo of repos">
-                    <h4>{{repo.name}}</h4>
-                </div>
             </div>
         </div>
     </div>
