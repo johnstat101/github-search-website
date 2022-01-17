@@ -4,19 +4,47 @@
         <input type="submit" value="Search" class="btn btn-secondary btn-sm">
     </div>
 </form>
+<hr>
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6">
         <div class="card">
-            <img [src]="githubProfile.avatar_url" alt="" class="img-fluid" mt-3>
+            <img [src]="githubProfile.avatar_url" alt="" class="img-fluid" style="height: 200px;width: 200px;">
             <div class="card-body">
                 <h3 class="card-title">{{githubProfile.name}}</h3>
                 <p class="card-text">{{githubProfile.bio}}</p>
                 <a [href]="githubProfile.html_url" target="_blank" class="btn btn-success btn-sm">See Profile</a>
             </div>
         </div>
-
     </div>
-    <div class="col-md-8">
-        <p>{{githubProfile.bio}}</p>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <span class="btn btn-primary btn-sm">{{githubProfile.followers}} Followers</span>
+                <span class="btn btn-warning btn-sm">{{githubProfile.following}} Following</span>
+                <span class="btn btn-secondary btn-sm">{{githubProfile.public_repos}} Public Repos</span>
+            </div>
+            <div class="card-body">
+                <ul class="list-group" *ngIf="userInput!=''">
+                    <li class="list-group-item">
+                        User Name: <span class="font-weight-bold">{{githubProfile.name}}</span>
+                    </li>
+                    <li class="list-group-item">
+                        Location: {{githubProfile.location}}
+                    </li>
+                    <li class="list-group-item">
+                        Last Updated: {{githubProfile.updated_at}}
+                    </li>
+                    <li class="list-group-item">
+                        Member Since: {{githubProfile.created_at}}
+                    </li>
+                    <li class="list-group-item">
+                        Profile URL: {{githubProfile.html_url}}
+                    </li>
+                    <li class="list-group-item">
+                        <a [href]="githubProfile.html_url" target="_blank" class="btn btn-success btn-sm">See All Public Repos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>

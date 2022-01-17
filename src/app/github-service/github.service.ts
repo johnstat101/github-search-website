@@ -12,14 +12,14 @@ export class GithubService {
   repo: Repository
 
   constructor(private http:HttpClient) {
-    this.user = new User("","","","","","","",new Date,new Date);
+    this.user = new User("","","","","","","","",new Date,new Date);
     this.repo = new Repository("","","",new Date,new Date);
    }
 
    githubUser(userInput:string){
      interface ApiResponse{
        avatar_url:any; name:string; bio:string; public_repos:string; followers:string;
-       following:string; created_at:Date; updated_at:Date;html_url:string
+       following:string; created_at:Date; updated_at:Date;html_url:string;location:string
      }
      
      let promise = new Promise((resolve,reject)=>{
@@ -33,6 +33,7 @@ export class GithubService {
          this.user.created_at = response!.created_at
         this.user.updated_at = response!.updated_at
         this.user.html_url = response!.html_url
+        this.user.location = response!.location
 
          resolve(response)
        },
