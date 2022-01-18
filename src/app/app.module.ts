@@ -9,6 +9,7 @@ import { SearchPageComponent } from './search-page/search-page.component';
 import { DisplayReposComponent } from './display-repos/display-repos.component';
 import { AppRoutingModule } from './app-routing.module';
 import { UnderlineDirective } from './underline.directive';
+import { DateCountPipe } from './date-count.pipe';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { UnderlineDirective } from './underline.directive';
     SearchPageComponent,
     DisplayReposComponent,
     UnderlineDirective,
+    DateCountPipe,
   ],
   imports: [
     BrowserModule,
