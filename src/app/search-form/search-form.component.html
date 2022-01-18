@@ -10,7 +10,7 @@
         <div class="card" style="align-items: center;">
             <img [src]="githubProfile.avatar_url" alt="" class="img-fluid" style="height: 200px;width: 170px;">
             <div class="card-body">
-                <h3 class="card-title">{{githubProfile.name}}</h3>
+                <h3 appUnderline class="card-title">{{githubProfile.name}}</h3>
                 <p class="card-text">{{githubProfile.bio}}</p>
                 <div>
                     <a [href]="githubProfile.html_url" target="_blank" class="btn btn-success btn-sm" appUnderline>See Profile</a>
@@ -34,10 +34,13 @@
                         Location: {{githubProfile.location}}
                     </li>
                     <li class="list-group-item">
-                        Last Updated: {{githubProfile.updated_at}}
+                        Last Updated: {{githubProfile.updated_at|dateCount}} Days ago
                     </li>
                     <li class="list-group-item">
-                        Member Since: {{githubProfile.created_at}}
+                        Member Since: {{githubProfile.created_at|date}}
+                    </li>
+                    <li class="list-group-item">
+                        Public Repos: {{githubProfile.public_repos}}
                     </li>
                     <li class="list-group-item">
                         Profile URL: {{githubProfile.html_url}}
