@@ -1,6 +1,18 @@
-# GithubProfileSearch
+# Quotes
+By John Kimani
+
+## Description
+This is a web application that allows users to enter a GitHub username into a form, submit it, and see names and descriptions of that person's public repositories. A person can also look for repositories
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.1.
+
+## User Requirements
+The application allows a user to:
+
+1. Search own Github User Name
+2. See your Profile information.
+3. See list of own public repositories
+4. Search other users repositories and profile information
 
 ## Development server
 
