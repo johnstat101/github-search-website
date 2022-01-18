@@ -8,6 +8,7 @@ import { SearchFormComponent } from './search-form/search-form.component';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { DisplayReposComponent } from './display-repos/display-repos.component';
 import { AppRoutingModule } from './app-routing.module';
+import { UnderlineDirective } from './underline.directive';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
     SearchFormComponent,
     SearchPageComponent,
     DisplayReposComponent,
+    UnderlineDirective,
   ],
   imports: [
     BrowserModule,
