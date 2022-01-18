@@ -5,7 +5,8 @@
     <div class="card-body">
         <ul class="list-group" *ngFor="let repo of repos">
             <li class="list-group-item">
-                Repo Name: <span class="font-weight-bold">{{repo.name}}</span>
+                <h6>Name: <span class="font-weight-bold">{{repo.name}}</span></h6>
+                <p>Description: {{repo.description}}</p>
             </li>
         </ul>
     </div>

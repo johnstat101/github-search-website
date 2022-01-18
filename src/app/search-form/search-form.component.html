@@ -7,12 +7,14 @@
 <hr>
 <div class="row" *ngIf="githubProfile">
     <div class="col-md-6">
-        <div class="card">
-            <img [src]="githubProfile.avatar_url" alt="" class="img-fluid" style="height: 200px;width: 200px;">
+        <div class="card" style="align-items: center;">
+            <img [src]="githubProfile.avatar_url" alt="" class="img-fluid" style="height: 200px;width: 170px;">
             <div class="card-body">
                 <h3 class="card-title">{{githubProfile.name}}</h3>
                 <p class="card-text">{{githubProfile.bio}}</p>
-                <a [href]="githubProfile.html_url" target="_blank" class="btn btn-success btn-sm">See Profile</a>
+                <div>
+                    <a [href]="githubProfile.html_url" target="_blank" class="btn btn-success btn-sm">See Profile</a>
+                </div>
             </div>
         </div>
     </div>
@@ -40,11 +42,16 @@
                     <li class="list-group-item">
                         Profile URL: {{githubProfile.html_url}}
                     </li>
-                    <li class="list-group-item">
-                        <a routerLink="repos" target="_blank" class="btn btn-success btn-sm">See All Public Repos</a>
-                    </li>
                 </ul>
             </div>
         </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="display-repos">
+            <app-display-repos [repos]=repos></app-display-repos>
+        </div>
+
     </div>
 </div>
